@@ -7,15 +7,18 @@ const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
 
-const corsOptions = {
-  origin: [
-    process.env.FRONTEND_URL
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  allowedHeaders: ["Content-Type", "Authorization", "multipart/form-data"],
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: 'https://hireflow-bhagya.vercel.app', // Allow only your front-end domain
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+app.use(cors()); // Allow all origins for testing
+
 
 // Connect to MongoDB
 mongoose
