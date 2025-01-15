@@ -10,9 +10,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: [
-    process.env.FRONTEND_URL,
-    "http://localhost:5173",
-    "https://smartrecruit.vercel.app", // for quick testing purpose included this hardcoded url
+    process.env.FRONTEND_URL
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization", "multipart/form-data"],
