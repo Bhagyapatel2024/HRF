@@ -16,8 +16,8 @@ const Signup = () => {
     const formData = { name, email, password };
     console.log(name, email, password);
     console.log("Clicked submit");
-    console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
-console.log("MONGODB_URI:", process.env.MONGODB_URI);
+    console.log(" BACKEND_URL:", BACKEND_URL);
+
 
     try {
       const response = await axios.post(`${BACKEND_URL}/signup`, formData);
