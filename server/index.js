@@ -14,7 +14,13 @@ console.log("MONGODB_URI:", process.env.MONGODB_URI);
 app.use(cors({
 
   origin:"https://hireflow-bhagya.vercel.app"
-})); // Allow all origins for testing
+   methods: "GET,POST,PUT,DELETE,OPTIONS",
+  credentials: true // Allow cookies and headers like Authorization
+}));
+
+// Handle preflight requests
+app.options("*", cors());
+
 
 app.get('/',(req,res)=>{
   res.json({message:"CORS issue resolved"});
