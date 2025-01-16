@@ -10,16 +10,15 @@ app.use(express.json());
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 console.log("MONGODB_URI:", process.env.MONGODB_URI);
 
-app.use(
-  cors({
-    origin: 'https://hireflow-bhagya.vercel.app', // Allow only your front-end domain
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-app.use(cors()); // Allow all origins for testing
 
+app.use(cors({
 
+  origin:"https://hireflow-bhagya.vercel.app"
+})); // Allow all origins for testing
+
+app.get('/',(req,res)=>{
+  res.json({message:"CORS issue resolved"});
+});
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
